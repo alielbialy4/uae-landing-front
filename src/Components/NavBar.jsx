@@ -15,6 +15,12 @@ export default function Navbar() {
     if (savedTheme) {
       setDarkMode(savedTheme === "dark");
     }
+
+    // جلب اللغة المحفوظة من local storage عند التحميل
+    const savedLanguage = localStorage.getItem("language");
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
   }, []);
 
   useEffect(() => {
@@ -35,7 +41,14 @@ export default function Navbar() {
 
   // تغيير اللغة
   const toggleLanguage = () => {
-    setLanguage(language === "en" ? "ar" : "en");
+    const newLanguage = language === "en" ? "ar" : "en";
+    setLanguage(newLanguage);
+
+    // حفظ اللغة في local storage
+    localStorage.setItem("language", newLanguage);
+
+    // إعادة تحميل الصفحة
+    window.location.reload();
   };
 
   const navbarVariants = {
