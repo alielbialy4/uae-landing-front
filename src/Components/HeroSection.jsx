@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion"; // استيراد framer-motion
+import { motion } from "framer-motion";
+import Image from "next/image";
+import HeroImage from "../Assets/pexels-rezwan-1216589.jpg";
 
 export default function HeroSection() {
   const [lang, setLang] = useState("en");
@@ -14,7 +16,7 @@ export default function HeroSection() {
   }, []);
 
   const titleVariants = {
-    hidden: { opacity: 0, y: 20 }, // يبدأ غير مرئي وينزاح قليلاً للأسفل
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -24,6 +26,36 @@ export default function HeroSection() {
       },
     },
   };
+
+  const aboutVariants = {
+    hidden: { opacity: 0, x: -50 }, // يبدأ غير مرئي وينزاح قليلاً إلى اليسار
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 0.3, // تأخير بسيط ليبدأ بعد العنوان الرئيسي
+      },
+    },
+  };
+
+  const translations = {
+    en: {
+      title: "Innovative technologies for modern construction",
+      aboutUs: "About Us",
+      aboutUsDescription:
+        "We are a leading construction company specializing in innovative technologies and modern building practices. Our commitment to quality and sustainability sets us apart.",
+    },
+    ar: {
+      title: "تقنيات مبتكرة للبناء الحديث",
+      aboutUs: "من نحن",
+      aboutUsDescription:
+        "نحن شركة إنشاءات رائدة متخصصة في التقنيات المبتكرة وممارسات البناء الحديثة. التزامنا بالجودة والاستدامة يميزنا.",
+    },
+  };
+
+  const currentTranslation = translations[lang] || translations["en"];
 
   return (
     <>
@@ -46,6 +78,7 @@ export default function HeroSection() {
                 ) : lang === "ar" ? (
                   <h1>
                     تقنيات
+                    <br />
                     مبتكرة
                     <br />
                     لإنشاءات عصرية
@@ -60,6 +93,31 @@ export default function HeroSection() {
                 className="fas fa-city fs-1 fs-md-3 fs-sm-5"
                 style={{ color: "gold" }}
               ></i>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="my-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-6 my-4">
+              <img
+                style={{ maxWidth: "100%", height: "auto" }}
+                src={HeroImage.src}
+                alt="Modern Construction"
+                className="rounded"
+              />
+            </div>
+            <div className="col-xl-6 my-4">
+              <motion.div
+                className="h-100 d-flex align-items-start justify-content-center flex-column"
+                variants={aboutVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <h1>{currentTranslation.aboutUs}</h1>
+                <p>{currentTranslation.aboutUsDescription}</p>
+              </motion.div>
             </div>
           </div>
         </div>

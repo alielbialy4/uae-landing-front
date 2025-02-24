@@ -68,7 +68,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`navbar navbar-expand-lg bg-body-tertiary`} // تم إزالة أنماط السمة من هنا
+      className={`navbar navbar-expand-lg `} // تم إزالة أنماط السمة من هنا
       variants={navbarVariants}
       initial="hidden"
       animate="visible"
