@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion"; // استيراد framer-motion
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,9 +38,27 @@ export default function Navbar() {
     setLanguage(language === "en" ? "ar" : "en");
   };
 
+  const navbarVariants = {
+    hidden: {
+      y: -100, // يبدأ خارج الشاشة من الأعلى
+      opacity: 0,
+    },
+    visible: {
+      y: 0, // ينزلق إلى مكانه الأصلي
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut", // حركة سلسة
+      },
+    },
+  };
+
   return (
-    <nav
+    <motion.nav
       className={`navbar navbar-expand-lg bg-body-tertiary`} // تم إزالة أنماط السمة من هنا
+      variants={navbarVariants}
+      initial="hidden"
+      animate="visible"
     >
       <div className="container">
         <Link className="navbar-brand" href="/">
@@ -148,6 +167,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
