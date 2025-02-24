@@ -77,7 +77,6 @@ export default function Navbar() {
         <Link className="navbar-brand" href="/">
           Construction Co.
         </Link>
-
         <button
           className="navbar-toggler"
           type="button"
