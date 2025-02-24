@@ -1,24 +1,4 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -29,14 +9,88 @@ body {
   padding: 0;
   margin: 0;
 }
+/* تعريف المتغيرات الجذرية (Root) */
+:root {
+  /* الألوان الأساسية */
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #28a745;
+
+  /* ألوان الخلفية والنصوص */
+  --background-color: #fff;
+  --text-color: #212529;
+  --link-color: var(--primary-color);
+
+  /* ألوان العناصر */
+  --card-background: #f8f9fa;
+  --border-color: #dee2e6;
+
+  /* ألوان الأزرار */
+  --button-background: var(--primary-color);
+  --button-text-color: #fff;
+  --button-hover-background: #0069d9;
+
+  /* لون زر اللغة */
+  --language-button-text-color: #495057;
+  /* الوضع الفاتح - رمادي أغمق */
+}
+
+/* تعريف الوضع المظلم */
+[data-bs-theme="dark"] {
+  --background-color: #212529;
+  --text-color: #fff;
+  --link-color: #00aaff;
+
+  --card-background: #343a40;
+  --border-color: #495057;
+
+  --button-background: #343a40;
+  --button-text-color: #fff;
+  --button-hover-background: #495057;
+
+  /* لون زر اللغة في الوضع المظلم */
+  --language-button-text-color: white;
+}
+
+/* أنماط عامة (تستخدم المتغيرات) */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 a {
-  color: inherit;
+  color: var(--link-color);
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+}
+
+.btn-primary {
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border-color: var(--button-background);
+}
+
+.btn-primary:hover {
+  background-color: var(--button-hover-background);
+  border-color: var(--button-hover-background);
+}
+
+/* نمط خاص لزر تغيير اللغة */
+.language-button {
+  color: var(--language-button-text-color);
+  /* استدعاء المتغير */
 }
