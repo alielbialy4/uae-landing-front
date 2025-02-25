@@ -4,11 +4,13 @@ import Navbar from "@/Components/NavBar";
 import HeroSection from "@/Components/HeroSection";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Services from "@/Components/Services";
+import Projects from "@/Components/Projects";
 export default function Home() {
   return (
     <>
       <Navbar/>
       <HeroSection />
+      <Projects/>
       <Services/>
     </>
   );
