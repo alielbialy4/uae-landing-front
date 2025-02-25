@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Footer from "../Components/Footer"
+import Footer from "../Components/Footer";
+
 export default function Services() {
   const [lang, setLang] = useState("en");
 
@@ -48,7 +49,8 @@ export default function Services() {
 
   const isArabic = lang === "ar"; // تحديد ما إذا كانت اللغة العربية
 
-  const [Boxes, setBoxes] = useState([
+  const Boxes = [
+    // لم نعد نستخدم useState هنا
     {
       icon: "fa-solid fa-building",
       title: currentTranslation.constructionTitle,
@@ -73,36 +75,9 @@ export default function Services() {
       subText: currentTranslation.greenBuildingSubText,
       link: "#",
     },
-  ]);
+  ];
 
-  useEffect(() => {
-    setBoxes([
-      {
-        icon: "fa-solid fa-building",
-        title: currentTranslation.constructionTitle,
-        subText: currentTranslation.constructionSubText,
-        link: "#",
-      },
-      {
-        icon: "fa-solid fa-hard-hat",
-        title: currentTranslation.engineeringTitle,
-        subText: currentTranslation.engineeringSubText,
-        link: "#",
-      },
-      {
-        icon: "fa-solid fa-hammer",
-        title: currentTranslation.renovationTitle,
-        subText: currentTranslation.renovationSubText,
-        link: "#",
-      },
-      {
-        icon: "fa-solid fa-leaf",
-        title: currentTranslation.greenBuildingTitle,
-        subText: currentTranslation.greenBuildingSubText,
-        link: "#",
-      },
-    ]);
-  }, [currentTranslation]);
+  // قمنا بإزالة useEffect هنا
 
   const cardBodyStyle = isArabic
     ? { textAlign: "right", direction: "rtl" }
@@ -172,7 +147,6 @@ export default function Services() {
                       {ele.subText}
                     </p>
                     <a
-                      
                       style={{ color: "#5d8749" }}
                       href={ele.link}
                       className="card-link text-decoration-none"
@@ -187,7 +161,7 @@ export default function Services() {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </>
   );
 }
