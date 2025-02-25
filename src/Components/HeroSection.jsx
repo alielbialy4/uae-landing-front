@@ -45,7 +45,7 @@ export default function HeroSection() {
       title: "Innovative technologies for modern construction",
       aboutUs: "About Us",
       aboutUsDescription:
-        "We are a leading construction company specializing in innovative technologies and modern building practices. Our commitment to quality and sustainability sets us apart.",
+        "We are a leading construction company specializing in innovative technologies and modern building practices. Our commitment to quality and sustainability sets us apart. With years of experience in the industry, we provide cutting-edge solutions that enhance efficiency, durability, and environmental responsibility in every project we undertake.",
     },
     ar: {
       title: "تقنيات مبتكرة للبناء الحديث",
@@ -102,15 +102,15 @@ export default function HeroSection() {
           <div className="row">
             <div className="col-xl-6 my-4">
               <img
-                style={{ maxWidth: "100%", height: "auto" }}
+                style={{ maxWidth: "100%", height: "auto",borderRadius:"20px" }}
                 src={HeroImage.src}
                 alt="Modern Construction"
-                className="rounded"
+                
               />
             </div>
             <div className="col-xl-6 my-4">
               <motion.div
-                className="h-100 d-flex align-items-start justify-content-center flex-column"
+                className="h-100 d-flex align-items-start justify-content-center flex-column px-4"
                 variants={aboutVariants}
                 initial="hidden"
                 animate="visible"

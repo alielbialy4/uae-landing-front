@@ -1,8 +1,10 @@
-"use client"; // لأننا نستخدم useState و onClick
-
+"use client";
 import Link from "next/link";
+import Image from "next/image"; // استيراد مكوّن Image
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion"; // استيراد framer-motion
+import { motion } from "framer-motion";
+import Uae from "../Assets/circle.png"; // صورة العلم الأولى
+import Usa from "../Assets/world.png"; // صورة العلم الثانية
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,8 +17,6 @@ export default function Navbar() {
     if (savedTheme) {
       setDarkMode(savedTheme === "dark");
     }
-
-    // جلب اللغة المحفوظة من local storage عند التحميل
     const savedLanguage = localStorage.getItem("language");
     if (savedLanguage) {
       setLanguage(savedLanguage);
@@ -31,44 +31,31 @@ export default function Navbar() {
       document.documentElement.setAttribute("data-bs-theme", "light");
       localStorage.setItem("theme", "light");
     }
-
-    // تحديد اتجاه الكتابة
     document.documentElement.setAttribute(
       "dir",
       language === "ar" ? "rtl" : "ltr"
     );
   }, [darkMode, language]);
 
-  // تغيير اللغة
   const toggleLanguage = () => {
     const newLanguage = language === "en" ? "ar" : "en";
     setLanguage(newLanguage);
-
-    // حفظ اللغة في local storage
     localStorage.setItem("language", newLanguage);
-
-    // إعادة تحميل الصفحة
     window.location.reload();
   };
 
   const navbarVariants = {
-    hidden: {
-      y: -100, // يبدأ خارج الشاشة من الأعلى
-      opacity: 0,
-    },
+    hidden: { y: -100, opacity: 0 },
     visible: {
-      y: 0, // ينزلق إلى مكانه الأصلي
+      y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut", // حركة سلسة
-      },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
   return (
     <motion.nav
-      className={`navbar navbar-expand-lg `} // تم إزالة أنماط السمة من هنا
+      className="navbar navbar-expand-lg"
       variants={navbarVariants}
       initial="hidden"
       animate="visible"
@@ -77,13 +64,13 @@ export default function Navbar() {
         <Link className="navbar-brand" href="/">
           Construction Co.
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
+        <i
+          style={{cursor:'pointer'}}
+          className="navbar-toggler border-0"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+          <i className="fa-solid fa-bars-staggered"></i>
+        </i>
 
         <div className={`collapse navbar-collapse ${menuOpen ? "show" : ""}`}>
           <ul className="navbar-nav mx-auto">
@@ -97,8 +84,6 @@ export default function Navbar() {
                 {language === "en" ? "About Us" : "معلومات عنا"}
               </Link>
             </li>
-
-            {/* Services (Dropdown) */}
             <li
               className="nav-item dropdown"
               onMouseEnter={() => setDropdownOpen(true)}
@@ -149,7 +134,6 @@ export default function Navbar() {
                 </li>
               </ul>
             </li>
-
             <li className="nav-item">
               <Link className="nav-link" href="/blog">
                 {language === "en" ? "Blog" : "المدونة"}
@@ -161,15 +145,19 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
-
           <div className="d-flex gap-3">
+            {/* زر تغيير اللغة باستخدام صورة العلم من Assets */}
             <button
               className="btn border language-button"
               onClick={toggleLanguage}
             >
-              {language === "en" ? "عربي" : "English"}
+              <Image
+                src={language === "en" ? Uae : Usa}
+                alt="flag"
+                width={20}
+                height={15}
+              />
             </button>
-
             <button
               className="btn btn-outline-light"
               onClick={() => setDarkMode(!darkMode)}
