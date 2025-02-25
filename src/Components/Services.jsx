@@ -112,7 +112,7 @@ export default function Services() {
     <>
       <section>
         <div className="container my-4">
-          <div className="row">
+          <div className="row my-5">
             <div
               className="col-12"
               style={isArabic ? { textAlign: "right" } : {}}
@@ -127,7 +127,7 @@ export default function Services() {
       </section>
 
       <section className="my-3">
-        <div className="container">
+        <div className="container my-4">
           <div className="row">
             {Boxes.map((ele, index) => (
               <motion.div
