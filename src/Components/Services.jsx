@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
+import Footer from "../Components/Footer"
 export default function Services() {
   const [lang, setLang] = useState("en");
 
@@ -187,6 +187,7 @@ export default function Services() {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

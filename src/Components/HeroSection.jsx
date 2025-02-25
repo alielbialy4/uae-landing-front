@@ -110,7 +110,7 @@ export default function HeroSection() {
             </div>
             <div className="col-xl-6 my-4">
               <motion.div
-                className="h-100 d-flex align-items-start justify-content-center flex-column px-4"
+                className="h-100 d-flex align-items-start justify-content-center flex-column px-2"
                 variants={aboutVariants}
                 initial="hidden"
                 animate="visible"
